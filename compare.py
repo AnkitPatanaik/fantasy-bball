@@ -5,9 +5,10 @@ YEAR_END = 2018
 def get_values(player_list_string):
     values = []
     player_list = player_list_string.split(", ")
+    player_list = [x.lower() for x in player_list] #iterates over list and makes everything lower()
     players = client.players_season_totals(YEAR_END)
     for player in players:
-        if player['name'] in player_list:
+        if player['name'].lower() in player_list:
             values.append(player)
     return values 
 
