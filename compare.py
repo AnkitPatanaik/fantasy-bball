@@ -1,6 +1,6 @@
 from basketball_reference_web_scraper import client
 
-YEAR_END = 2019
+YEAR_END = 2018
 
 def get_values(player_list):
     values = []
@@ -23,4 +23,4 @@ def main():
     team_2 = raw_input("enter comma separated list with players from the other team")
     
 #print(get_stats(get_values(["Joe Harris", "Kevin Durant"])))
-print(get_values(["Joe Harris"]))
+print(get_values(["Myles Turner"]))
