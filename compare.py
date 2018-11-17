@@ -6,8 +6,8 @@ PRECISION = 2
 def get_values(player_list_string):
     values = []
     
-    player_list = player_list_string.split(", ")
-    player_list = [x.lower() for x in player_list] #iterates over list and makes everything lower()
+    player_list = player_list_string.split(",")
+    player_list = [x.lower().strip() for x in player_list] #iterates over list and makes everything lower()
 
     players = client.players_season_totals(YEAR_END)
     for player in players:
