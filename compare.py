@@ -36,9 +36,15 @@ def get_stats(player_dict):
     stats['ft%'] = round(stats['made_free_throws']/stats['attempted_free_throws'] * 100, PRECISION)
     return stats
 
+def pretty_print(dictionary):
+    print("\nSTATS:")
+    for item in dictionary:
+        print(item.capitalize()+": ", dictionary[str(item)])
+    print("\n")
+
 def main():
-    team_1 = input("enter comma separated list with players from one team: \n")
+    team_1 = input("Enter comma separated list players. Please be wary of spelling!: \n")
     team1_players = get_values(team_1)
-    print("STATS: \n", get_stats(team1_players))
+    pretty_print(get_stats(team1_players))
     
 main()
