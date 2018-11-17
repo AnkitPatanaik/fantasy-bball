@@ -4,7 +4,7 @@ YEAR_END = 2018
 
 def get_values(player_list_string):
     values = []
-    player_list = player_list_string.split(",")
+    player_list = player_list_string.split(", ")
     players = client.players_season_totals(YEAR_END)
     for player in players:
         if player['name'] in player_list:
@@ -30,8 +30,8 @@ def get_stats(player_dict):
 
 def main():
     team_1 = input("enter comma separated list with players from one team: \n")
-    print("Your player being traded's stats: ")
-    print(get_stats(get_values(team_1)))
+    team1_players = get_values(team_1)
+    print("STATS: \n", get_stats(team1_players))
     #team_2 = raw_input("enter comma separated list with players from the other team")
     
 main()
