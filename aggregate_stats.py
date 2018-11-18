@@ -36,7 +36,6 @@ def get_stats(player_dict):
     stats['ft%'] = round(stats['made_free_throws']/stats['attempted_free_throws'] * 100, PRECISION)
     return stats
 
-# Utility to print the stats dictionary nicely
 def pretty_print(dictionary):
     print("\nSTATS:")
     for item in dictionary:
