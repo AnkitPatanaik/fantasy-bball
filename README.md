@@ -1,3 +1,4 @@
+# How to Run
 1. `pipenv shell`
 2. `pipenv install`
 3. `python compare.py`
