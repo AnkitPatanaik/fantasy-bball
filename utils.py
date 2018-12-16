@@ -23,7 +23,8 @@ def get_stats(player_dict):
     stats['fg%'] = round(stats['made_field_goals']/stats['attempted_field_goals'] * 100, PRECISION)
     stats['ft%'] = round(stats['made_free_throws']/stats['attempted_free_throws'] * 100, PRECISION)
     return stats
-    
+
+# Print a dictionary with a some nicer formatting
 def pretty_print(dictionary):
     print("\nSTATS:")
     for item in dictionary:
