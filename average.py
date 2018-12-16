@@ -1,26 +1,5 @@
 from basketball_reference_web_scraper import client
-from utils import pretty_print, get_values, PRECISION
-
-# Get the sum total of all stats for the players inputted
-def get_stats(player_dict):
-    stats = {'points': 0, 'assists': 0, 'rebounds': 0, 'steals': 0, 'blocks': 0, 'made_field_goals': 0, 'attempted_field_goals': 0,'fg%': 0,  'made_free_throws': 0, 'attempted_free_throws': 0, 'ft%': 0, '3pm': 0, 'turnovers': 0, 'games_played': 0}
-    
-    for player in player_dict:
-        stats['assists'] += player['assists']
-        stats['rebounds'] += player['offensive_rebounds'] + player['defensive_rebounds']
-        stats['steals'] += player['steals']
-        stats['blocks'] += player['blocks']
-        stats['made_field_goals'] += player['made_field_goals'] 
-        stats['attempted_field_goals'] += player['attempted_field_goals']
-        stats['made_free_throws'] += player['made_free_throws'] 
-        stats['attempted_free_throws'] += player['attempted_free_throws']
-        stats['3pm'] += player['made_three_point_field_goals']
-        stats['turnovers'] += player['turnovers']
-        stats['games_played'] += player['games_played']
-        stats['points'] += player['made_field_goals'] * 2 + player['made_three_point_field_goals'] + player['made_free_throws']
-    stats['fg%'] = round(stats['made_field_goals']/stats['attempted_field_goals'] * 100, PRECISION)
-    stats['ft%'] = round(stats['made_free_throws']/stats['attempted_free_throws'] * 100, PRECISION)
-    return stats
+from utils import pretty_print, get_values, get_stats,PRECISION
 
 def get_average(stats):
     games_played = stats['games_played']
