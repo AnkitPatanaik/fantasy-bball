@@ -1,4 +1,7 @@
-from utils import *
+from basketball_reference_web_scraper import client
+
+YEAR_END = 2019
+PRECISION = 2
 
 # Get the sum total of all stats for the players inputted
 def get_stats(player_dict):
@@ -21,9 +24,22 @@ def get_stats(player_dict):
     stats['ft%'] = round(stats['made_free_throws']/stats['attempted_free_throws'] * 100, PRECISION)
     return stats
 
-def main():
-    team_1 = input("Enter comma separated list players. Please be wary of spelling!: \n")
-    team1_players = get_values(team_1)
-    pretty_print(get_stats(team1_players))
+# Print a dictionary with a some nicer formatting
+def pretty_print(dictionary):
+    print("\nSTATS:")
+    for item in dictionary:
+        print(item.capitalize()+": ", dictionary[str(item)])
+    print("\n")
+
+# Parse the list of players and create a list
+def get_values(player_list_string):
+    values = []
     
-main()
+    player_list = player_list_string.split(",")
+    player_list = [x.lower().strip() for x in player_list] #iterates over list and makes everything lower()
+
+    players = client.players_season_totals(YEAR_END)
+    for player in players:
+        if player['name'].lower() in player_list:
+            values.append(player)
+    return values 
