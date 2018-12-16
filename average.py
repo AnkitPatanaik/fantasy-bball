@@ -1,20 +1,5 @@
 from basketball_reference_web_scraper import client
-
-YEAR_END = 2019
-PRECISION = 2
-
-# Parse the list of players and create a list
-def get_values(player_list_string):
-    values = []
-    
-    player_list = player_list_string.split(",")
-    player_list = [x.lower().strip() for x in player_list] #iterates over list and makes everything lower()
-
-    players = client.players_season_totals(YEAR_END)
-    for player in players:
-        if player['name'].lower() in player_list:
-            values.append(player)
-    return values 
+from utils import pretty_print, get_values, PRECISION
 
 # Get the sum total of all stats for the players inputted
 def get_stats(player_dict):
@@ -53,15 +38,9 @@ def get_average(stats):
         avg_dict['attempted_free_throws'] = round(stats['attempted_free_throws'] / games_played , PRECISION)
         avg_dict['3pm'] = round(stats['3pm'] / games_played , PRECISION)
         avg_dict['turnovers'] = round(stats['turnovers'] / games_played, PRECISION)
-        avg_dict['games_played'] = round(stats['games_played'] / games_played, PRECISION) 
+        avg_dict['games_played'] = stats['games_played'] 
         avg_dict['points'] =  round((stats['made_field_goals'] * 2 + stats['3pm'] + stats['made_free_throws']) / games_played, PRECISION)
     return avg_dict
-
-def pretty_print(dictionary):
-    print("\nSTATS:")
-    for item in dictionary:
-        print(item.capitalize()+": ", dictionary[str(item)])
-    print("\n")
 
 def main():
     team_1 = input("Enter comma separated list players. Please be wary of spelling!: \n")
