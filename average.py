@@ -1,7 +1,7 @@
 from basketball_reference_web_scraper import client
 from utils import pretty_print, get_values, get_stats,PRECISION
 
-/
+# Average the sum total of stats by number of games played 
 def get_average(stats):
     games_played = stats['games_played']
     avg_dict= {'points': 0, 'assists': 0, 'rebounds': 0, 'steals': 0, 'blocks': 0, 'made_field_goals': 0, 'attempted_field_goals': 0,'fg%': 0,  'made_free_throws': 0, 'attempted_free_throws': 0, 'ft%': 0, '3pm': 0, 'turnovers': 0}
